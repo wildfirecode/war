@@ -1,0 +1,13 @@
+{
+  "ver": "1.1.38",
+  "importer": "prefab",
+  "imported": true,
+  "uuid": "087cd290-636f-444e-9622-638fec4b03e1",
+  "files": [
+    ".json"
+  ],
+  "subMetas": {},
+  "userData": {
+    "syncNodeName": "bomb"
+  }
+}
