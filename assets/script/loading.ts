@@ -1,5 +1,4 @@
-import { Animation, AnimationClip, Component, director, Layers, Node, Sprite, _decorator } from 'cc';
-import { loadAtlas } from '../utils/loadAtlas';
+import { Component, director, _decorator } from 'cc';
 import { loadRemoteModel } from '../utils/loadRemoteModel';
 const { ccclass, property } = _decorator;
 
