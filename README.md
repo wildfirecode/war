@@ -1,4 +1,8 @@
 # war
+
+## http-server 跨域
+ http-server --cors='*' 
+ 
 ## 加载远程图集
 - 考虑 https://github.com/zhefengzhang/load-remote-plist
 

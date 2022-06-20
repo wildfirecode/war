@@ -8,7 +8,7 @@
  * 
  * Copyright (c) 2022 by wildfirecode wildfirecode13@gmail.com, All Rights Reserved. 
  */
-import { Asset, assetManager, path, Rect, Size, SpriteAtlas, SpriteFrame, Vec2,Texture2D } from 'cc';
+import { Asset, assetManager, path, Rect, Size, SpriteAtlas, SpriteFrame, Vec2, Texture2D } from 'cc';
 
 const load = (remoteUrl) => {
     return new Promise((resolve) => {
@@ -55,7 +55,7 @@ function parseRect(rectStr) {
     );
 }
 
-const parsePlist = (plist, spriteFrame:SpriteFrame) => {
+const parsePlist = (plist, spriteFrame: SpriteFrame) => {
     let info = plist._file.metadata;
     let frames = plist._file.frames;
 
@@ -104,6 +104,7 @@ const parsePlist = (plist, spriteFrame:SpriteFrame) => {
 
     return atlas;
 }
+
 export const loadAtlas = async (url: string) => {
     const plistUrl = url + '.plist';
     const imageAssetUrl = url + '.png';
