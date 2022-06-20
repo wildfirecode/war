@@ -5,4 +5,6 @@ export interface IFrameAnimationOptions {
      * 2 循环
      */
     wrapMode?:number;
+    finished?:Function;
+    thisobj?:any;
 }

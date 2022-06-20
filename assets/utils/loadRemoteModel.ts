@@ -2,7 +2,7 @@
  * @Author: wildfirecode wildfirecode13@gmail.com
  * @Date: 2022-06-20 20:05:11
  * @LastEditors: wildfirecode wildfirecode13@gmail.com
- * @LastEditTime: 2022-06-20 20:15:22
+ * @LastEditTime: 2022-06-20 20:43:35
  * @FilePath: \war\assets\utils\loadRemoteModel.ts
  * @Description: 
  * 
@@ -15,7 +15,12 @@ export const loadRemoteModel = (remoteUrl, options: IFrameAnimationOptions = {})
     const animationNode = new Node();
     animationNode.addComponent(Sprite);
     animationNode.layer = Layers.Enum.UI_2D;
-    animationNode.addComponent(Animation);
+    const animation = animationNode.addComponent(Animation);
+
+    if (options.finished) {
+        // @ts-ignore
+        animation.once('finished', options.finished, options.thisobj);
+    }
 
     // const remoteUrl = 'http://10.42.0.244:8080/hero';
     loadAtlas(remoteUrl).then((atlas) => {
