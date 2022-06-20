@@ -1,0 +1,86 @@
+{
+  "ver": "1.0.6",
+  "importer": "sprite-atlas",
+  "imported": true,
+  "uuid": "dc072c88-0521-4ca1-a535-26b9fd2d5990",
+  "files": [
+    ".plist",
+    ".json"
+  ],
+  "subMetas": {
+    "de2d6": {
+      "importer": "sprite-frame",
+      "uuid": "dc072c88-0521-4ca1-a535-26b9fd2d5990@de2d6",
+      "displayName": "",
+      "id": "de2d6",
+      "name": "enemy3_n1",
+      "userData": {
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": 0,
+        "trimX": 0,
+        "trimY": 0,
+        "width": 169,
+        "height": 258,
+        "rawWidth": 169,
+        "rawHeight": 258,
+        "borderTop": 0,
+        "borderBottom": 0,
+        "borderLeft": 0,
+        "borderRight": 0,
+        "packable": true,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "c0736933-8816-4622-9b57-46298abfe37f@6c48a",
+        "atlasUuid": "dc072c88-0521-4ca1-a535-26b9fd2d5990"
+      },
+      "ver": "1.0.9",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "8ff69": {
+      "importer": "sprite-frame",
+      "uuid": "dc072c88-0521-4ca1-a535-26b9fd2d5990@8ff69",
+      "displayName": "",
+      "id": "8ff69",
+      "name": "enemy3_n2",
+      "userData": {
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": 0,
+        "trimX": 0,
+        "trimY": 258,
+        "width": 169,
+        "height": 258,
+        "rawWidth": 169,
+        "rawHeight": 258,
+        "borderTop": 0,
+        "borderBottom": 0,
+        "borderLeft": 0,
+        "borderRight": 0,
+        "packable": true,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "c0736933-8816-4622-9b57-46298abfe37f@6c48a",
+        "atlasUuid": "dc072c88-0521-4ca1-a535-26b9fd2d5990"
+      },
+      "ver": "1.0.9",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "atlasTextureName": "enemy3.png",
+    "format": 3,
+    "uuid": "dc072c88-0521-4ca1-a535-26b9fd2d5990",
+    "textureUuid": "c0736933-8816-4622-9b57-46298abfe37f@6c48a"
+  }
+}

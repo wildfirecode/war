@@ -1,0 +1,154 @@
+{
+  "ver": "1.0.6",
+  "importer": "sprite-atlas",
+  "imported": true,
+  "uuid": "47374c58-434f-4cd9-81f0-95381d61293f",
+  "files": [
+    ".plist",
+    ".json"
+  ],
+  "subMetas": {
+    "7e9de": {
+      "importer": "sprite-frame",
+      "uuid": "47374c58-434f-4cd9-81f0-95381d61293f@7e9de",
+      "displayName": "",
+      "id": "7e9de",
+      "name": "hero_blowup_n1",
+      "userData": {
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": 0,
+        "trimX": 0,
+        "trimY": 0,
+        "width": 99,
+        "height": 124,
+        "rawWidth": 99,
+        "rawHeight": 124,
+        "borderTop": 0,
+        "borderBottom": 0,
+        "borderLeft": 0,
+        "borderRight": 0,
+        "packable": true,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "f22f8400-205c-4fe6-af30-6cc150724f8b@6c48a",
+        "atlasUuid": "47374c58-434f-4cd9-81f0-95381d61293f"
+      },
+      "ver": "1.0.9",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "3f9de": {
+      "importer": "sprite-frame",
+      "uuid": "47374c58-434f-4cd9-81f0-95381d61293f@3f9de",
+      "displayName": "",
+      "id": "3f9de",
+      "name": "hero_blowup_n2",
+      "userData": {
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": 0,
+        "trimX": 99,
+        "trimY": 0,
+        "width": 99,
+        "height": 124,
+        "rawWidth": 99,
+        "rawHeight": 124,
+        "borderTop": 0,
+        "borderBottom": 0,
+        "borderLeft": 0,
+        "borderRight": 0,
+        "packable": true,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "f22f8400-205c-4fe6-af30-6cc150724f8b@6c48a",
+        "atlasUuid": "47374c58-434f-4cd9-81f0-95381d61293f"
+      },
+      "ver": "1.0.9",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "ccdd6": {
+      "importer": "sprite-frame",
+      "uuid": "47374c58-434f-4cd9-81f0-95381d61293f@ccdd6",
+      "displayName": "",
+      "id": "ccdd6",
+      "name": "hero_blowup_n3",
+      "userData": {
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": 0,
+        "trimX": 198,
+        "trimY": 0,
+        "width": 99,
+        "height": 124,
+        "rawWidth": 99,
+        "rawHeight": 124,
+        "borderTop": 0,
+        "borderBottom": 0,
+        "borderLeft": 0,
+        "borderRight": 0,
+        "packable": true,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "f22f8400-205c-4fe6-af30-6cc150724f8b@6c48a",
+        "atlasUuid": "47374c58-434f-4cd9-81f0-95381d61293f"
+      },
+      "ver": "1.0.9",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "02785": {
+      "importer": "sprite-frame",
+      "uuid": "47374c58-434f-4cd9-81f0-95381d61293f@02785",
+      "displayName": "",
+      "id": "02785",
+      "name": "hero_blowup_n4",
+      "userData": {
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": 0,
+        "trimX": 297,
+        "trimY": 0,
+        "width": 99,
+        "height": 124,
+        "rawWidth": 99,
+        "rawHeight": 124,
+        "borderTop": 0,
+        "borderBottom": 0,
+        "borderLeft": 0,
+        "borderRight": 0,
+        "packable": true,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "f22f8400-205c-4fe6-af30-6cc150724f8b@6c48a",
+        "atlasUuid": "47374c58-434f-4cd9-81f0-95381d61293f"
+      },
+      "ver": "1.0.9",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "atlasTextureName": "hero_blowup.png",
+    "format": 3,
+    "uuid": "47374c58-434f-4cd9-81f0-95381d61293f",
+    "textureUuid": "f22f8400-205c-4fe6-af30-6cc150724f8b@6c48a"
+  }
+}

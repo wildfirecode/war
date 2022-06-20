@@ -1,0 +1,154 @@
+{
+  "ver": "1.0.6",
+  "importer": "sprite-atlas",
+  "imported": true,
+  "uuid": "fc1bf6a9-89f0-4820-9ad1-4e017eb62a2b",
+  "files": [
+    ".plist",
+    ".json"
+  ],
+  "subMetas": {
+    "1e5b0": {
+      "importer": "sprite-frame",
+      "uuid": "fc1bf6a9-89f0-4820-9ad1-4e017eb62a2b@1e5b0",
+      "displayName": "",
+      "id": "1e5b0",
+      "name": "game_loading1",
+      "userData": {
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": 0,
+        "trimX": 0,
+        "trimY": 0,
+        "width": 186,
+        "height": 38,
+        "rawWidth": 186,
+        "rawHeight": 38,
+        "borderTop": 0,
+        "borderBottom": 0,
+        "borderLeft": 0,
+        "borderRight": 0,
+        "packable": true,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "5168947f-35f5-4fad-a1f1-690780e3308c@6c48a",
+        "atlasUuid": "fc1bf6a9-89f0-4820-9ad1-4e017eb62a2b"
+      },
+      "ver": "1.0.9",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "8c7e9": {
+      "importer": "sprite-frame",
+      "uuid": "fc1bf6a9-89f0-4820-9ad1-4e017eb62a2b@8c7e9",
+      "displayName": "",
+      "id": "8c7e9",
+      "name": "game_loading2",
+      "userData": {
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": 0,
+        "trimX": 186,
+        "trimY": 0,
+        "width": 186,
+        "height": 37,
+        "rawWidth": 186,
+        "rawHeight": 37,
+        "borderTop": 0,
+        "borderBottom": 0,
+        "borderLeft": 0,
+        "borderRight": 0,
+        "packable": true,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "5168947f-35f5-4fad-a1f1-690780e3308c@6c48a",
+        "atlasUuid": "fc1bf6a9-89f0-4820-9ad1-4e017eb62a2b"
+      },
+      "ver": "1.0.9",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "49a5b": {
+      "importer": "sprite-frame",
+      "uuid": "fc1bf6a9-89f0-4820-9ad1-4e017eb62a2b@49a5b",
+      "displayName": "",
+      "id": "49a5b",
+      "name": "game_loading3",
+      "userData": {
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": 0,
+        "trimX": 372,
+        "trimY": 0,
+        "width": 186,
+        "height": 38,
+        "rawWidth": 186,
+        "rawHeight": 38,
+        "borderTop": 0,
+        "borderBottom": 0,
+        "borderLeft": 0,
+        "borderRight": 0,
+        "packable": true,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "5168947f-35f5-4fad-a1f1-690780e3308c@6c48a",
+        "atlasUuid": "fc1bf6a9-89f0-4820-9ad1-4e017eb62a2b"
+      },
+      "ver": "1.0.9",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "1d542": {
+      "importer": "sprite-frame",
+      "uuid": "fc1bf6a9-89f0-4820-9ad1-4e017eb62a2b@1d542",
+      "displayName": "",
+      "id": "1d542",
+      "name": "game_loading4",
+      "userData": {
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": 0,
+        "trimX": 558,
+        "trimY": 0,
+        "width": 114,
+        "height": 28,
+        "rawWidth": 114,
+        "rawHeight": 28,
+        "borderTop": 0,
+        "borderBottom": 0,
+        "borderLeft": 0,
+        "borderRight": 0,
+        "packable": true,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "5168947f-35f5-4fad-a1f1-690780e3308c@6c48a",
+        "atlasUuid": "fc1bf6a9-89f0-4820-9ad1-4e017eb62a2b"
+      },
+      "ver": "1.0.9",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "atlasTextureName": "game_loading.png",
+    "format": 3,
+    "uuid": "fc1bf6a9-89f0-4820-9ad1-4e017eb62a2b",
+    "textureUuid": "5168947f-35f5-4fad-a1f1-690780e3308c@6c48a"
+  }
+}

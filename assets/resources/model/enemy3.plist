@@ -4,33 +4,33 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>hero1.png</key>
+            <key>enemy3_n1.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{99,124}</string>
+                <string>{169,258}</string>
                 <key>spriteSourceSize</key>
-                <string>{99,124}</string>
+                <string>{169,258}</string>
                 <key>textureRect</key>
-                <string>{{0,0},{99,124}}</string>
+                <string>{{0,0},{169,258}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>hero2.png</key>
+            <key>enemy3_n2.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{99,124}</string>
+                <string>{169,258}</string>
                 <key>spriteSourceSize</key>
-                <string>{99,124}</string>
+                <string>{169,258}</string>
                 <key>textureRect</key>
-                <string>{{99,0},{99,124}}</string>
+                <string>{{0,258},{169,258}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -44,13 +44,13 @@
             <key>premultiplyAlpha</key>
             <false/>
             <key>realTextureFileName</key>
-            <string>hero.png</string>
+            <string>enemy3.png</string>
             <key>size</key>
-            <string>{198,124}</string>
+            <string>{169,516}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:bfdf5f76ef37339e64223a87dc1a657d:2c74253e4857fbaf6cfdef69ec49c294:e44e28a7f983377b8bb0c97d886e5bb7$</string>
+            <string>$TexturePacker:SmartUpdate:1258d44322891221c7845e546187ab98:7770f9dcdc769a2c5d137a45c6b3cfdd:8bef6c65495a1b67faadf52aab9a7f06$</string>
             <key>textureFileName</key>
-            <string>hero.png</string>
+            <string>enemy3.png</string>
         </dict>
     </dict>
 </plist>
