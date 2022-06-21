@@ -1,8 +1,7 @@
 import { Component, _decorator } from 'cc';
-import { loadAtlas } from '../utils/loadAtlas';
-import { loadModel } from '../utils/loadModel';
 import { loadRemoteImage } from '../utils/loadRemoteImage';
 import { loadRemoteModel } from '../utils/loadRemoteModel';
+import { getHalfStageWidth } from '../utils/stage';
 const { ccclass, property } = _decorator;
 
 @ccclass('game')
@@ -13,9 +12,7 @@ export class game extends Component {
 
         const hero = loadRemoteModel('http://10.42.0.244:8080/model/hero');
         this.node.addChild(hero);
-
-
-
+        hero.position.set(-getHalfStageWidth(), 0, 0);
 
         // const getpos = () => {
         //     const pos = 300;
