@@ -2,7 +2,7 @@
  * @Author: wildfirecode wildfirecode13@gmail.com
  * @Date: 2022-06-21 19:33:22
  * @LastEditors: wildfirecode wildfirecode13@gmail.com
- * @LastEditTime: 2022-06-21 20:43:33
+ * @LastEditTime: 2022-06-21 21:08:27
  * @FilePath: \war\assets\lib\Movable.ts
  * @Description: 
  * 
@@ -15,19 +15,19 @@ const { ccclass, property } = _decorator;
 
 @ccclass('Movable')
 export class Movable extends Component {
-    velocityX = -2;
-    velocityY = 0;
+    velocityX = 0;
+    velocityY = 2;
     start() {
-        console.log('Movable start');
+        // console.log('Movable start');
     }
 
     onLoad() {
-        console.log('Movable onLoad');
+        // console.log('Movable onLoad');
     }
 
     onDestroy() {
         console.log('Movable onDestroy');
-        
+
         this.node.parent.removeChild(this.node);
     }
 
@@ -39,13 +39,12 @@ export class Movable extends Component {
 
         const sprite = this.node.getComponent(Sprite);
         if (sprite?.spriteFrame) {
-            sprite.spriteFrame.height
             const size = sprite.spriteFrame.originalSize;
             const topEdge = getHalfStageHeight() + size.height / 2;
             const bottomEdge = -getHalfStageHeight() - size.height / 2;
             const rightEdge = getHalfStageWidth() + size.width / 2;
             const leftEdge = -getHalfStageWidth() - size.width / 2;
-            
+
             if (posy > topEdge || posy < bottomEdge || posx < leftEdge || posx > rightEdge) {
                 this.destroy();
             }
