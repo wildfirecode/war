@@ -2,61 +2,30 @@
  * @Author: wildfirecode wildfirecode13@gmail.com
  * @Date: 2022-06-20 09:28:13
  * @LastEditors: wildfirecode wildfirecode13@gmail.com
- * @LastEditTime: 2022-06-21 17:43:49
+ * @LastEditTime: 2022-06-21 19:24:24
  * @FilePath: \war\assets\script\game.ts
  * @Description: 
  * 
  * Copyright (c) 2022 by wildfirecode wildfirecode13@gmail.com, All Rights Reserved. 
  */
-import { Component, EventTouch, input, Input, Vec2, Vec3, view, _decorator } from 'cc';
+import { Component, _decorator } from 'cc';
+import { Draggable } from '../lib/Draggable';
 import { loadImage } from '../utils/loadImage';
 import { loadModel } from '../utils/loadModel';
-import { getHalfStageWidth, getStageHeight, getStageWidth } from '../utils/stage';
+import { getHalfStageWidth } from '../utils/stage';
 const { ccclass, property } = _decorator;
 
 @ccclass('game')
 export class game extends Component {
     start() {
 
-        // this.createBackground();
+        this.createBackground();
 
         const hero = loadModel('model/hero');
         this.node.addChild(hero);
+        hero.addComponent(Draggable)
 
         console.log('node name:', this.node.name, getHalfStageWidth());
-        
-        
-        const vec3 = new Vec3();
-        input.on(Input.EventType.TOUCH_MOVE, (event: EventTouch) => {
-            const offsetX = event.getDeltaX() ;
-            const offsetY = event.getDeltaY() ;
-            const posx = offsetX / view.getScaleX() + hero.position.x;
-            const posy = offsetY / view.getScaleX() + hero.position.y;
-            hero.setPosition(vec3.set(posx, posy, 0));
-        }, this)
-
-
-
-        // let startX,startY;
-        // let originX,originY;
-        // input.on(Input.EventType.TOUCH_START, (event: EventTouch) => {
-        //     originX = hero.position.x;
-        //     originY = hero.position.y;
-        //     startX = event.getLocationX();
-        //     startY = event.getLocationY();
-        // }, this)
-        // input.on(Input.EventType.TOUCH_END, (event: EventTouch) => {
-        //     startX = 0;
-        //     startY = 0;
-        // }, this)
-        // input.on(Input.EventType.TOUCH_MOVE, (event: EventTouch) => {
-        //     const offsetX = event.getLocationX() - startX;
-        //     const offsetY = event.getLocationY() - startY;
-        //     const posx = offsetX / view.getScaleX() + originX;
-        //     const posy = offsetY / view.getScaleX() + originY;
-        //     hero.setPosition(vec3.set(posx, posy, 0));
-        // }, this)
-
 
 
         // const getpos = () => {
