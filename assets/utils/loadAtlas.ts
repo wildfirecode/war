@@ -2,7 +2,7 @@
  * @Author: wildfirecode wildfirecode13@gmail.com
  * @Date: 2022-06-20 15:51:36
  * @LastEditors: wildfirecode wildfirecode13@gmail.com
- * @LastEditTime: 2022-06-20 16:52:16
+ * @LastEditTime: 2022-06-21 10:28:36
  * @FilePath: \war\assets\utils\loadAtlas.ts
  * @Description: 
  * 
@@ -55,7 +55,12 @@ function parseRect(rectStr) {
     );
 }
 
-const parsePlist = (plist, spriteFrame: SpriteFrame) => {
+const atlasCache = {};
+const parsePlist = (url, plist, spriteFrame: SpriteFrame) => {
+    if (atlasCache[url]) {
+        // console.log('use cache:' + url);
+        return atlasCache[url];
+    }
     let info = plist._file.metadata;
     let frames = plist._file.frames;
 
@@ -102,6 +107,10 @@ const parsePlist = (plist, spriteFrame: SpriteFrame) => {
         spriteFrames[name] = sprite;
     }
 
+    if (!atlasCache[url]) {
+        atlasCache[url] = atlas;
+        console.log('add cache:' + url);
+    }
     return atlas;
 }
 
@@ -113,5 +122,5 @@ export const loadAtlas = async (url: string) => {
         load(plistUrl),
         load(imageAssetUrl)
     ]);
-    return parsePlist(plist, SpriteFrame.createWithImage(imageAsset as any));
+    return parsePlist(url, plist, SpriteFrame.createWithImage(imageAsset as any));
 }
