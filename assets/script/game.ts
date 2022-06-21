@@ -1,4 +1,16 @@
-import { Component, _decorator } from 'cc';
+/*
+ * @Author: wildfirecode wildfirecode13@gmail.com
+ * @Date: 2022-06-20 09:28:13
+ * @LastEditors: wildfirecode wildfirecode13@gmail.com
+ * @LastEditTime: 2022-06-21 14:32:03
+ * @FilePath: \war\assets\script\game.ts
+ * @Description: 
+ * 
+ * Copyright (c) 2022 by wildfirecode wildfirecode13@gmail.com, All Rights Reserved. 
+ */
+import { Component, input,Input, _decorator } from 'cc';
+import { loadImage } from '../utils/loadImage';
+import { loadModel } from '../utils/loadModel';
 import { loadRemoteImage } from '../utils/loadRemoteImage';
 import { loadRemoteModel } from '../utils/loadRemoteModel';
 import { getHalfStageWidth } from '../utils/stage';
@@ -10,9 +22,24 @@ export class game extends Component {
 
         this.createBackground();
 
-        const hero = loadRemoteModel('http://10.42.0.244:8080/model/hero');
+        const hero = loadModel('model/hero');
         this.node.addChild(hero);
-        hero.position.set(-getHalfStageWidth(), 0, 0);
+
+        input.on(Input.EventType.MOUSE_DOWN,()=>{
+            console.log('MOUSE_DOWN');
+        },this)
+
+        input.on(Input.EventType.MOUSE_UP,()=>{
+            console.log('MOUSE_UP');
+        },this)
+
+        input.on(Input.EventType.MOUSE_MOVE,()=>{
+            console.log('MOUSE_MOVE');
+        },this)
+        input.on(Input.EventType.MOUSE_DOWN,()=>{
+            console.log('MOUSE_MOVE');
+        },this)
+        // hero.position.set(-getHalfStageWidth(), 0, 0);
 
         // const getpos = () => {
         //     const pos = 300;
@@ -43,8 +70,8 @@ export class game extends Component {
     }
 
     private createBackground() {
-        const remoteUrl = 'http://10.42.0.244:8080/ui/background.png';
-        const image = loadRemoteImage(remoteUrl);
+        const url = 'ui/background';
+        const image = loadImage(url);
         this.node.addChild(image);
     }
 }

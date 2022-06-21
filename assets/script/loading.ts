@@ -1,4 +1,5 @@
 import { Component, director, _decorator } from 'cc';
+import { loadModel } from '../utils/loadModel';
 import { loadRemoteModel } from '../utils/loadRemoteModel';
 const { ccclass, property } = _decorator;
 
@@ -8,12 +9,18 @@ export class loading extends Component {
         director.loadScene('game')
     }
     start() {
-        const remoteUrl = 'http://10.42.0.244:8080/model/game_loading';
-        const animationNode = loadRemoteModel(remoteUrl, {
+        const resourcesUrl = 'model/game_loading'
+        const animationNode = loadModel(resourcesUrl, {
             fps: 4, wrapMode: 1,
             finished: this.onAnimationFinished,
             thisobj: this
         });
+        // const remoteUrl = 'http://10.42.0.244:8080/model/game_loading';
+        // const animationNode = loadRemoteModel(remoteUrl, {
+        //     fps: 4, wrapMode: 1,
+        //     finished: this.onAnimationFinished,
+        //     thisobj: this
+        // });
         this.node.addChild(animationNode);
     }
 }
