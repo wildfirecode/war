@@ -2,7 +2,7 @@
  * @Author: wildfirecode wildfirecode13@gmail.com
  * @Date: 2022-06-21 14:26:58
  * @LastEditors: wildfirecode wildfirecode13@gmail.com
- * @LastEditTime: 2022-06-21 14:33:08
+ * @LastEditTime: 2022-06-22 15:12:59
  * @FilePath: \war\assets\utils\loadImage.ts
  * @Description: 
  * 

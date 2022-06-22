@@ -1,8 +1,8 @@
 /*
  * @Author: wildfirecode wildfirecode13@gmail.com
- * @Date: 2022-06-21 09:17:13
+ * @Date: 2022-06-21 10:36:41
  * @LastEditors: wildfirecode wildfirecode13@gmail.com
- * @LastEditTime: 2022-06-22 14:23:40
+ * @LastEditTime: 2022-06-22 15:16:01
  * @FilePath: \war\assets\utils\loadModel.ts
  * @Description: 
  * 
@@ -11,8 +11,9 @@
 import { Animation, AnimationClip, Layers, Node, resources, Sprite, SpriteAtlas } from 'cc';
 import { AnimationNode } from '../lib/AnimationNode';
 import { IFrameAnimationOptions } from './IFrameAnimationOptions';
-export const loadModel = (resourcesUrl, options: IFrameAnimationOptions = {}) => {
+export const loadModel = (resourcesUrl: string, options: IFrameAnimationOptions = {}) => {
     const animationNode = new AnimationNode();
+    animationNode.name = resourcesUrl.replace('\/', '-');
     animationNode.addComponent(Sprite);
     animationNode.layer = Layers.Enum.UI_2D;
     const animation = animationNode.addComponent(Animation);

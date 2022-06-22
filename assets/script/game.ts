@@ -2,15 +2,14 @@
  * @Author: wildfirecode wildfirecode13@gmail.com
  * @Date: 2022-06-20 09:28:13
  * @LastEditors: wildfirecode wildfirecode13@gmail.com
- * @LastEditTime: 2022-06-22 14:35:54
+ * @LastEditTime: 2022-06-22 15:04:49
  * @FilePath: \war\assets\script\game.ts
  * @Description: 
  * 
  * Copyright (c) 2022 by wildfirecode wildfirecode13@gmail.com, All Rights Reserved. 
  */
 import { Component, _decorator } from 'cc';
-import { AnimationNode } from '../lib/AnimationNode';
-import { getHalfStageHeight, getHalfStageWidth } from '../utils/stage';
+import { getHalfStageWidth } from '../utils/stage';
 import { createBackground, createHero } from './game/utils';
 const { ccclass, property } = _decorator;
 
@@ -22,10 +21,6 @@ export class game extends Component {
         const hero = createHero();
         this.node.addChild(bg);
         this.node.addChild(hero);
-
-        hero.once(AnimationNode.SPRITE_ATLAS_LOAD_COMPLETE, () => {
-            hero.setPosition(0, -getHalfStageHeight() + hero.spriteFrameHeight / 2, 0)
-        }, this);
 
         console.log('node name:', this.node.name, getHalfStageWidth());
 
