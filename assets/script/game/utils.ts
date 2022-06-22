@@ -2,7 +2,7 @@
  * @Author: wildfirecode wildfirecode13@gmail.com
  * @Date: 2022-06-22 14:11:32
  * @LastEditors: wildfirecode wildfirecode13@gmail.com
- * @LastEditTime: 2022-06-22 16:36:25
+ * @LastEditTime: 2022-06-22 16:53:39
  * @FilePath: \war\assets\script\game\utils.ts
  * @Description: 
  * 
@@ -15,19 +15,21 @@ import { Movable } from "../../lib/Movable";
 import { loadImage } from "../../utils/loadImage";
 import { loadModel } from "../../utils/loadModel";
 import { getHalfStageHeight, getHalfStageWidth } from "../../utils/stage";
+import { Enemy } from "./Enemy";
 import { Weapon } from "./Weapon";
 
-export const createEnemy = () => {
-    const enemy = loadModel('model/enemy3');
-    const movable = enemy.addComponent(Movable);
-    movable.velocityY = -10;
-    enemy.once(AnimationNode.SPRITE_ATLAS_LOAD_COMPLETE, () => {
-        enemy.setPosition(-getHalfStageWidth(), getHalfStageHeight() - enemy.spriteFrameHeight / 2, 0)
+export const createEnemyNode = () => {
+    const enemyNode = loadModel('model/enemy3');
+    enemyNode.once(AnimationNode.SPRITE_ATLAS_LOAD_COMPLETE, () => {
+        const movable = enemyNode.addComponent(Movable);
+        enemyNode.addComponent(Enemy);
+        movable.velocityY = -10;
+        enemyNode.setPosition(-getHalfStageWidth(), getHalfStageHeight() - enemyNode.spriteFrameHeight / 2, 0)
     }, this);
-    return enemy
+    return enemyNode
 }
 
-export const createHero = () => {
+export const createHeroNode = () => {
     const hero = loadModel('model/hero');
     hero.addComponent(Draggable);
     hero.once(AnimationNode.SPRITE_ATLAS_LOAD_COMPLETE, () => {

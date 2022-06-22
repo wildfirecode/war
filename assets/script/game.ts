@@ -2,61 +2,93 @@
  * @Author: wildfirecode wildfirecode13@gmail.com
  * @Date: 2022-06-20 09:28:13
  * @LastEditors: wildfirecode wildfirecode13@gmail.com
- * @LastEditTime: 2022-06-22 16:37:07
+ * @LastEditTime: 2022-06-22 17:49:09
  * @FilePath: \war\assets\script\game.ts
  * @Description: 
  * 
  * Copyright (c) 2022 by wildfirecode wildfirecode13@gmail.com, All Rights Reserved. 
  */
-import { Component, Input, Node, _decorator, Event } from 'cc';
+import { Component, Input, Node, _decorator, Event, Sprite, UITransform } from 'cc';
+import { AnimationNode } from '../lib/AnimationNode';
 import { Firable } from '../lib/Firable';
 import { Movable } from '../lib/Movable';
 import { getHalfStageWidth } from '../utils/stage';
 import { Army } from './game/Army';
-import { createBackground, createHero } from './game/utils';
+import { createBackground, createHeroNode } from './game/utils';
 const { ccclass, property } = _decorator;
 
 @ccclass('game')
 export class game extends Component {
-    private _hero: Node;
-    private _army: Army;
+    private _hero: AnimationNode;
     private _bullets: Node[];
-    private _enemies: Node[];
+    private _enemies: AnimationNode[];
 
     update(dt: number) {
-        this._hero;
+        // console.log('bullets:'+this._bullets.length);
+        // console.log('enemies:' + this._enemies.length);
+        for (let index = 0; index < this._enemies.length; index++) {
+            const enemy = this._enemies[index];
+            if (!enemy.atlas) continue;//还没加载完成
+            if (this._hero.atlas) {
+                const x0 = Math.abs(enemy.position.x - this._hero.position.x);
+                const y0 = Math.abs(enemy.position.y - this._hero.position.y);
+                const x1 = enemy.spriteFrameWidth + this._hero.spriteFrameWidth;
+                const y1 = enemy.spriteFrameHeight + this._hero.spriteFrameHeight;
+                if (x0 < x1 && y0 < y1) {
+                    console.log('gg');
+                    this.enabled = false;
+                    return;
+                }
+            }
+            for (let j = 0; j < this._bullets.length; j++) {
+                const bullet = this._bullets[j];
+                const bulletSprite = bullet.getComponent(Sprite);
+                if (!bulletSprite) {
+                    continue;
+                }
+                const x0 = Math.abs(enemy.position.x - bullet.position.x);
+                const y0 = Math.abs(enemy.position.y - bullet.position.y);
+                const x1 = enemy.spriteFrameWidth + bulletSprite.spriteFrame.originalSize.width;
+                const y1 = enemy.spriteFrameHeight + bulletSprite.spriteFrame.originalSize.height;
+                if (x0 < x1 && y0 < y1) {
+                    
+                }
+            }
+
+        }
     }
 
-    private removeBullet(bullet:Node) {
+    private removeBullet(bullet: Node) {
         const index = this._bullets.indexOf(bullet);
         this._bullets.splice(index, 1);
         // console.log('bullets:'+this._bullets.length);
-        
+
     }
-    private removeEnemy(enemy:Node) {
+    private removeEnemy(enemy: AnimationNode) {
         const index = this._enemies.indexOf(enemy);
         this._enemies.splice(index, 1);
-        console.log('enemies:'+this._enemies.length);
+        // console.log('enemies:'+this._enemies.length);
     }
 
     start() {
+        this._enemies = this._enemies || [];
+        this._bullets = this._bullets || [];
+
         const bg = createBackground();
-        const hero = this._hero = createHero();
+        const hero = this._hero = createHeroNode();
         this.node.addChild(bg);
         this.node.addChild(hero);
 
-        this._army = this.node.addComponent(Army);
+        this.node.addComponent(Army);
 
-        this.node.on(Firable.FIRE, (enemy:Node) => {
-            console.log('on game fire', enemy.name);
-            this._enemies = this._enemies || [];
+        this.node.on(Firable.FIRE, (enemy: AnimationNode) => {
+            // console.log('on game fire', enemy.name, enemy);
             this._enemies.push(enemy);
             enemy.once(Movable.ON_DISAPPEAR, this.removeEnemy, this);
         }, this);
 
         this._hero.on(Firable.FIRE, (bullet: Node) => {
-            // console.log('on hero fire', bullet.name);
-            this._bullets = this._bullets || [];
+            // console.log('on hero fire', bullet.name,bullet);
             this._bullets.push(bullet);
             bullet.once(Movable.ON_DISAPPEAR, this.removeBullet, this);
         }, this);

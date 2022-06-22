@@ -2,7 +2,7 @@
  * @Author: wildfirecode wildfirecode13@gmail.com
  * @Date: 2022-06-21 19:33:22
  * @LastEditors: wildfirecode wildfirecode13@gmail.com
- * @LastEditTime: 2022-06-22 16:26:55
+ * @LastEditTime: 2022-06-22 17:39:54
  * @FilePath: \war\assets\lib\Movable.ts
  * @Description: 
  * 
@@ -28,9 +28,7 @@ export class Movable extends Component {
 
     onDestroy() {
         // console.log('Movable onDestroy');
-        this.node.parent.removeChild(this.node);
-        this.node.emit(Movable.ON_DISAPPEAR,this.node);
-
+        this.node.emit(Movable.ON_DISAPPEAR, this.node);
     }
 
     update(dt: number) {
@@ -48,7 +46,7 @@ export class Movable extends Component {
             const leftEdge = -getHalfStageWidth() - size.width / 2;
 
             if (posy > topEdge || posy < bottomEdge || posx < leftEdge || posx > rightEdge) {
-                this.destroy();
+                this.node.destroy();
             }
         }
     }

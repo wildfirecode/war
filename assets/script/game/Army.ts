@@ -11,7 +11,7 @@
 
 import { _decorator } from 'cc';
 import { Firable } from '../../lib/Firable';
-import { createEnemy } from './utils';
+import { createEnemyNode } from './utils';
 
 const { ccclass, property } = _decorator;
 
@@ -23,7 +23,7 @@ export class Army extends Firable {
     }
 
     protected fire() {
-        const enemy = this.data = createEnemy();
+        const enemy = this.data = createEnemyNode();
         const gamescene = this.node;
         gamescene.addChild(enemy);
         super.fire();

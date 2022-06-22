@@ -12,12 +12,12 @@
 import { Layers, Node, resources, Sprite, SpriteFrame } from 'cc';
 export const loadImage = (url:string) => {
     const image = new Node();
-    image.name = url.replace('\/','-')
-    url += '/spriteFrame'
-    const sprite = image.addComponent(Sprite);
     image.layer = Layers.Enum.UI_2D;
+    image.name = url.replace('\/','-');
+    url += '/spriteFrame';
 
     resources.load(url, SpriteFrame, (err, spriteFrame) => {
+        const sprite = image.addComponent(Sprite);
         sprite.spriteFrame = spriteFrame
     })
 
