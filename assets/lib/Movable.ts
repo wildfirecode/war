@@ -2,7 +2,7 @@
  * @Author: wildfirecode wildfirecode13@gmail.com
  * @Date: 2022-06-21 19:33:22
  * @LastEditors: wildfirecode wildfirecode13@gmail.com
- * @LastEditTime: 2022-06-22 17:39:54
+ * @LastEditTime: 2022-06-22 20:35:45
  * @FilePath: \war\assets\lib\Movable.ts
  * @Description: 
  * 
@@ -11,10 +11,11 @@
 
 import { Component, _decorator, input, Input, EventTouch, Vec2, Vec3, view, Sprite } from 'cc';
 import { getHalfStageHeight, getHalfStageWidth } from '../utils/stage';
+import { IPoolItem } from './Pool';
 const { ccclass, property } = _decorator;
 
 @ccclass('Movable')
-export class Movable extends Component {
+export class Movable extends Component implements IPoolItem {
     static ON_DISAPPEAR = 'ON_DISAPPEAR';
     velocityX = 0;
     velocityY = 2;
@@ -26,9 +27,12 @@ export class Movable extends Component {
         // console.log('Movable onLoad');
     }
 
-    onDestroy() {
-        // console.log('Movable onDestroy');
-        this.node.emit(Movable.ON_DISAPPEAR, this.node);
+    reuse(){
+        // console.log('Movable reuse');
+    }
+    
+    unuse(){
+        // console.log('Movable unuse');
     }
 
     update(dt: number) {
@@ -46,7 +50,7 @@ export class Movable extends Component {
             const leftEdge = -getHalfStageWidth() - size.width / 2;
 
             if (posy > topEdge || posy < bottomEdge || posx < leftEdge || posx > rightEdge) {
-                this.node.destroy();
+                this.node.emit(Movable.ON_DISAPPEAR, this.node);
             }
         }
     }

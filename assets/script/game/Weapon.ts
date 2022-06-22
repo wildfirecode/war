@@ -2,7 +2,7 @@
  * @Author: wildfirecode wildfirecode13@gmail.com
  * @Date: 2022-06-21 20:51:03
  * @LastEditors: wildfirecode wildfirecode13@gmail.com
- * @LastEditTime: 2022-06-22 16:31:17
+ * @LastEditTime: 2022-06-22 20:32:19
  * @FilePath: \war\assets\script\game\Weapon.ts
  * @Description: 
  * 
@@ -12,17 +12,17 @@
 import { Vec2, _decorator } from 'cc';
 import { Firable } from '../../lib/Firable';
 import { Movable } from '../../lib/Movable';
-import { loadImage } from '../../utils/loadImage';
+import { bulletPool } from './utils';
 
 const { ccclass, property } = _decorator;
 
 @ccclass('Weapon')
 export class Weapon extends Firable {
     firePiontOffset: Vec2;
-    bulletModel = 'ui/bullet1';
-    bulletVelocityY = 5;
+    bulletVelocityY = 10;
 
     protected start() {
+        super.start();
         this._fireInterval = .1;
     }
     protected fire() {
@@ -31,8 +31,9 @@ export class Weapon extends Firable {
     }
 
     private creatBullet() {
-        const bullet = loadImage(this.bulletModel);
-        const movable = bullet.addComponent(Movable);
+
+        const bullet = bulletPool.get();
+        const movable = bullet.getComponent(Movable);
 
         movable.velocityY = this.bulletVelocityY;
 

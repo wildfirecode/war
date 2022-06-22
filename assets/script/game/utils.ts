@@ -2,7 +2,7 @@
  * @Author: wildfirecode wildfirecode13@gmail.com
  * @Date: 2022-06-22 14:11:32
  * @LastEditors: wildfirecode wildfirecode13@gmail.com
- * @LastEditTime: 2022-06-22 16:53:39
+ * @LastEditTime: 2022-06-22 20:24:06
  * @FilePath: \war\assets\script\game\utils.ts
  * @Description: 
  * 
@@ -12,11 +12,20 @@ import { Vec2 } from "cc";
 import { AnimationNode } from "../../lib/AnimationNode";
 import { Draggable } from "../../lib/Draggable";
 import { Movable } from "../../lib/Movable";
+import { Pool } from "../../lib/Pool";
 import { loadImage } from "../../utils/loadImage";
 import { loadModel } from "../../utils/loadModel";
 import { getHalfStageHeight, getHalfStageWidth } from "../../utils/stage";
 import { Enemy } from "./Enemy";
 import { Weapon } from "./Weapon";
+
+export const createBullet = () => {
+    const bullet = loadImage('ui/bullet1');
+    bullet.addComponent(Movable);
+    return bullet;
+}
+
+export const bulletPool = new Pool(createBullet, [Movable]);
 
 export const createEnemyNode = () => {
     const enemyNode = loadModel('model/enemy3');
@@ -35,8 +44,7 @@ export const createHeroNode = () => {
     hero.once(AnimationNode.SPRITE_ATLAS_LOAD_COMPLETE, () => {
         const weapon = hero.addComponent(Weapon);
         weapon.firePiontOffset = new Vec2(0, hero.spriteFrameHeight / 2);
-        hero.setPosition(-getHalfStageWidth(), -getHalfStageHeight() + hero.spriteFrameHeight / 2, 0)
-        // hero.setPosition(0, -getHalfStageHeight() + hero.spriteFrameHeight / 2, 0)
+        hero.setPosition(0, -getHalfStageHeight() + hero.spriteFrameHeight / 2, 0)
     }, this);
     return hero
 }
