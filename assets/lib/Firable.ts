@@ -21,6 +21,7 @@ export class Firable extends Component {
     public data: any;
 
     protected start() {
+        this.fire()
         this._fireInterval = 2;
     }
 

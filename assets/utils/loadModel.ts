@@ -2,7 +2,7 @@
  * @Author: wildfirecode wildfirecode13@gmail.com
  * @Date: 2022-06-21 10:36:41
  * @LastEditors: wildfirecode wildfirecode13@gmail.com
- * @LastEditTime: 2022-06-22 15:16:01
+ * @LastEditTime: 2022-06-22 21:21:10
  * @FilePath: \war\assets\utils\loadModel.ts
  * @Description: 
  * 
@@ -30,7 +30,7 @@ export const loadModel = (resourcesUrl: string, options: IFrameAnimationOptions 
         const clip = AnimationClip.createWithSpriteFrames(frames, fps);
         clip.name = 'standby';
         clip.wrapMode = options.wrapMode || 2;//循环 WrapMode.Loop
-        const animation = animationNode.getComponent(Animation);
+        // const animation = animationNode.getComponent(Animation);
         animation.defaultClip = clip;
         animation.play('standby');
     });

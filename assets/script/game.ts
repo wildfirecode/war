@@ -2,7 +2,7 @@
  * @Author: wildfirecode wildfirecode13@gmail.com
  * @Date: 2022-06-20 09:28:13
  * @LastEditors: wildfirecode wildfirecode13@gmail.com
- * @LastEditTime: 2022-06-22 20:37:52
+ * @LastEditTime: 2022-06-22 21:19:45
  * @FilePath: \war\assets\script\game.ts
  * @Description: 
  * 
@@ -13,6 +13,7 @@ import { AnimationNode } from '../lib/AnimationNode';
 import { Firable } from '../lib/Firable';
 import { Movable } from '../lib/Movable';
 import { getHalfStageWidth } from '../utils/stage';
+import { Army } from './game/Army';
 import { bulletPool, createBackground, createHeroNode } from './game/utils';
 const { ccclass, property } = _decorator;
 
@@ -25,36 +26,55 @@ export class game extends Component {
     update(dt: number) {
         // console.log('bullets:'+this._bullets.length);
         // console.log('enemies:' + this._enemies.length);
-        // for (let index = 0; index < this._enemies.length; index++) {
-        //     const enemy = this._enemies[index];
-        //     if (!enemy.atlas) continue;//还没加载完成
-        //     if (this._hero.atlas) {
-        //         const x0 = Math.abs(enemy.position.x - this._hero.position.x);
-        //         const y0 = Math.abs(enemy.position.y - this._hero.position.y);
-        //         const x1 = enemy.spriteFrameWidth + this._hero.spriteFrameWidth;
-        //         const y1 = enemy.spriteFrameHeight + this._hero.spriteFrameHeight;
-        //         if (x0 < x1 && y0 < y1) {
-        //             console.log('gg');
-        //             // this.enabled = false;
-        //             return;
-        //         }
-        //     }
-        //     for (let j = 0; j < this._bullets.length; j++) {
-        //         const bullet = this._bullets[j];
-        //         const bulletSprite = bullet.getComponent(Sprite);
-        //         if (!bulletSprite) {
-        //             continue;
-        //         }
-        //         const x0 = Math.abs(enemy.position.x - bullet.position.x);
-        //         const y0 = Math.abs(enemy.position.y - bullet.position.y);
-        //         const x1 = enemy.spriteFrameWidth + bulletSprite.spriteFrame.originalSize.width;
-        //         const y1 = enemy.spriteFrameHeight + bulletSprite.spriteFrame.originalSize.height;
-        //         if (x0 < x1 && y0 < y1) {
+        for (let index = 0; index < this._enemies.length; index++) {
+            const enemy = this._enemies[index];
+            if (!this._hero.atlas) {
+                // console.log('hero atlas 还没加载完成'); 
+            }
+            if (!enemy.atlas) {
+                // console.log('enemy atlas 还没加载完成');
+                continue;  //还没加载完成
+            }
+            if (this._hero.atlas) {
+                const x0 = Math.abs(enemy.position.x - this._hero.position.x);
+                const y0 = Math.abs(enemy.position.y - this._hero.position.y);
+                const x1 = enemy.spriteFrameWidth / 2 + this._hero.spriteFrameWidth / 2;
+                const y1 = enemy.spriteFrameHeight / 2 + this._hero.spriteFrameHeight / 2;
+                if (x0 < x1 && y0 < y1) {
+                    console.log('ggggggggggggggggg');
+                    this.enabled = false;
+                    // this.destroy();
+                    this.stop();
+                    return;
+                }
+            }
+            //     for (let j = 0; j < this._bullets.length; j++) {
+            //         const bullet = this._bullets[j];
+            //         const bulletSprite = bullet.getComponent(Sprite);
+            //         if (!bulletSprite) {
+            //             continue;
+            //         }
+            //         const x0 = Math.abs(enemy.position.x - bullet.position.x);
+            //         const y0 = Math.abs(enemy.position.y - bullet.position.y);
+            //         const x1 = enemy.spriteFrameWidth/2 + bulletSprite.spriteFrame.originalSize.width/2;
+            //         const y1 = enemy.spriteFrameHeight/2 + bulletSprite.spriteFrame.originalSize.height/2;
+            //         if (x0 < x1 && y0 < y1) {
 
-        //         }
-        //     }
+            //         }
+            //     }
 
-        // }
+        }
+    }
+
+    private stop() {
+        //清理战场
+        //清理子弹
+        //清理敌人
+        for (let index = 0; index < this._enemies.length; index++) {
+            const enemy = this._enemies[index];
+            const movable = enemy.getComponent(Movable);
+            movable.enabled = false;
+        }
     }
 
     private removeBullet(bullet: Node) {
@@ -80,7 +100,7 @@ export class game extends Component {
         this.node.addChild(bg);
         this.node.addChild(hero);
 
-        // this.node.addComponent(Army);
+        this.node.addComponent(Army);
 
         this.node.on(Firable.FIRE, (enemy: AnimationNode) => {
             // console.log('on game fire', enemy.name, enemy);

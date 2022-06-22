@@ -19,7 +19,8 @@ const { ccclass, property } = _decorator;
 export class Army extends Firable {
 
     protected start() {
-        this._fireInterval = 1;
+        super.start();
+        this._fireInterval = 100;
     }
 
     protected fire() {
