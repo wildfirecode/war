@@ -10,18 +10,19 @@
  */
 import { Component, _decorator } from 'cc';
 import { getHalfStageWidth } from '../utils/stage';
+import { Army } from './game/Army';
 import { createBackground, createHero } from './game/utils';
 const { ccclass, property } = _decorator;
 
 @ccclass('game')
 export class game extends Component {
     start() {
-
         const bg = createBackground();
         const hero = createHero();
         this.node.addChild(bg);
         this.node.addChild(hero);
 
+        this.node.addComponent(Army);
         console.log('node name:', this.node.name, getHalfStageWidth());
 
         // const getpos = () => {
