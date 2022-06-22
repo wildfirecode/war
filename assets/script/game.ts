@@ -58,7 +58,6 @@ export class game extends Component {
     }
 
     private removeBullet(bullet: Node) {
-        // console.log('remove bullet');
         bulletPool.put(bullet);
         bullet.parent.removeChild(bullet);
         const index = this._bullets.indexOf(bullet);
