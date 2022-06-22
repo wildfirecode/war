@@ -2,7 +2,7 @@
  * @Author: wildfirecode wildfirecode13@gmail.com
  * @Date: 2022-06-21 19:33:22
  * @LastEditors: wildfirecode wildfirecode13@gmail.com
- * @LastEditTime: 2022-06-21 21:08:27
+ * @LastEditTime: 2022-06-22 16:26:55
  * @FilePath: \war\assets\lib\Movable.ts
  * @Description: 
  * 
@@ -15,6 +15,7 @@ const { ccclass, property } = _decorator;
 
 @ccclass('Movable')
 export class Movable extends Component {
+    static ON_DISAPPEAR = 'ON_DISAPPEAR';
     velocityX = 0;
     velocityY = 2;
     start() {
@@ -26,9 +27,10 @@ export class Movable extends Component {
     }
 
     onDestroy() {
-        console.log('Movable onDestroy');
-
+        // console.log('Movable onDestroy');
         this.node.parent.removeChild(this.node);
+        this.node.emit(Movable.ON_DISAPPEAR,this.node);
+
     }
 
     update(dt: number) {

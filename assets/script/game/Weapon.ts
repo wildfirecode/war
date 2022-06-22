@@ -2,7 +2,7 @@
  * @Author: wildfirecode wildfirecode13@gmail.com
  * @Date: 2022-06-21 20:51:03
  * @LastEditors: wildfirecode wildfirecode13@gmail.com
- * @LastEditTime: 2022-06-22 15:33:50
+ * @LastEditTime: 2022-06-22 16:31:17
  * @FilePath: \war\assets\script\game\Weapon.ts
  * @Description: 
  * 
@@ -26,7 +26,8 @@ export class Weapon extends Firable {
         this._fireInterval = .1;
     }
     protected fire() {
-        this.creatBullet();
+        this.data = this.creatBullet();
+        super.fire();
     }
 
     private creatBullet() {
@@ -39,6 +40,7 @@ export class Weapon extends Firable {
 
         const gamescene = this.node.parent;
         gamescene.addChild(bullet);
+        return bullet;
     }
 }
 

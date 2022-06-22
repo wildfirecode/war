@@ -2,7 +2,7 @@
  * @Author: wildfirecode wildfirecode13@gmail.com
  * @Date: 2022-06-22 14:07:49
  * @LastEditors: wildfirecode wildfirecode13@gmail.com
- * @LastEditTime: 2022-06-22 15:34:37
+ * @LastEditTime: 2022-06-22 16:34:31
  * @FilePath: \war\assets\script\game\Army.ts
  * @Description: 
  * 
@@ -19,13 +19,14 @@ const { ccclass, property } = _decorator;
 export class Army extends Firable {
 
     protected start() {
-        this._fireInterval = 2;
+        this._fireInterval = 1;
     }
 
     protected fire() {
-        const enemy = createEnemy();
+        const enemy = this.data = createEnemy();
         const gamescene = this.node;
         gamescene.addChild(enemy);
+        super.fire();
     }
 }
 

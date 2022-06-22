@@ -12,6 +12,7 @@
 import { Layers, Node, resources, Sprite, SpriteFrame } from 'cc';
 export const loadImage = (url:string) => {
     const image = new Node();
+    image.name = url.replace('\/','-')
     url += '/spriteFrame'
     const sprite = image.addComponent(Sprite);
     image.layer = Layers.Enum.UI_2D;
