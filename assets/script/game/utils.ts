@@ -2,7 +2,7 @@
  * @Author: wildfirecode wildfirecode13@gmail.com
  * @Date: 2022-06-22 14:11:32
  * @LastEditors: wildfirecode wildfirecode13@gmail.com
- * @LastEditTime: 2022-06-23 17:38:56
+ * @LastEditTime: 2022-06-23 18:02:46
  * @FilePath: \war\assets\script\game\utils.ts
  * @Description: 
  * 
@@ -10,6 +10,7 @@
  */
 import { Vec2 } from "cc";
 import { AnimationModel } from "../../lib/AnimationNode";
+import { createNode } from "../../lib/createNode";
 import { Draggable } from "../../lib/Draggable";
 import { Movable } from "../../lib/Movable";
 import { Pool } from "../../lib/Pool";
@@ -28,13 +29,14 @@ export const createBullet = () => {
 export const bulletPool = new Pool(createBullet, [Movable]);
 
 export const createEnemyNode = () => {
-    const enemyNode = new AnimationModel();
+    const enemyNode = createNode();
     enemyNode.name = 'enemy';
-    enemyNode.addDefaultAction('standby', 'model/enemy3', { wrapMode: 2 });
+    const model = enemyNode.addComponent(AnimationModel);
+    model.addDefaultAction('standby', 'model/enemy3', { wrapMode: 2 });
     enemyNode.once(AnimationModel.SPRITE_ATLAS_LOAD_COMPLETE, (action) => {
         const movable = enemyNode.addComponent(Movable);
         movable.velocityY = -8;
-        enemyNode.setPosition(0, getHalfStageHeight() - enemyNode.getSpriteFrameHeight(action) / 2, 0)
+        enemyNode.setPosition(0, getHalfStageHeight() - model.getSpriteFrameHeight(action) / 2, 0)
     }, this);
     return enemyNode;
 }
@@ -51,10 +53,12 @@ export const createHero = () => {
         console.log('onBlowUpFinish');
         hero.parent = null;
     }
-    const hero = new AnimationModel();
+    const hero = createNode();
     hero.addComponent(Draggable);
-    hero.addDefaultAction('standby', 'model/hero', { wrapMode: 2 });
-    hero.addAction('blowup', 'model/hero_blowup', { wrapMode: 1, finished: onBlowUpFinish, thisobj: this });
+    const model = hero.addComponent(AnimationModel);
+    model.addDefaultAction('standby', 'model/hero', { wrapMode: 2 });
+    // model.addAction('blowup', 'model/hero_blowup', { wrapMode: 1, finished: onBlowUpFinish, thisobj: this });
+
     hero.setPosition(0, 0, 0)
     return hero
 }

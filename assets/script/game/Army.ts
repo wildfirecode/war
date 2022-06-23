@@ -24,9 +24,9 @@ export class Army extends Firable {
     }
 
     protected fire() {
-        const enemy = this.data = createEnemyNode();
-        const gamescene = this.node;
-        gamescene.addChild(enemy);
+        // const enemy = this.data = createEnemyNode();
+        // const gamescene = this.node;
+        // gamescene.addChild(enemy);
         super.fire();
     }
 }

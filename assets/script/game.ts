@@ -2,7 +2,7 @@
  * @Author: wildfirecode wildfirecode13@gmail.com
  * @Date: 2022-06-20 09:28:13
  * @LastEditors: wildfirecode wildfirecode13@gmail.com
- * @LastEditTime: 2022-06-23 17:24:27
+ * @LastEditTime: 2022-06-23 18:01:44
  * @FilePath: \war\assets\script\game.ts
  * @Description: 
  * 
@@ -19,9 +19,9 @@ const { ccclass, property } = _decorator;
 
 @ccclass('game')
 export class game extends Component {
-    private _hero: AnimationModel;
+    private _hero: Node;
     private _bullets: Node[];
-    private _enemies: AnimationModel[];
+    private _enemies: Node[];
 
     start() {
         this._enemies = this._enemies || [];
@@ -35,9 +35,9 @@ export class game extends Component {
 
         this.node.addComponent(Army);
 
-        this.node.on(Firable.FIRE, (enemy: AnimationModel) => {
+        this.node.on(Firable.FIRE, (enemy: Node) => {
             console.log('on game fire=>', enemy?.name, enemy);
-            this._enemies.push(enemy);
+            // this._enemies.push(enemy);
             // enemy.once(Movable.ON_DISAPPEAR, this.removeEnemy, this);
         }, this);
 
@@ -79,29 +79,35 @@ export class game extends Component {
     update(dt: number) {
         // console.log('bullets:'+this._bullets.length);
         // console.log('enemies:' + this._enemies.length);
+
+        
         for (let index = 0; index < this._enemies.length; index++) {
             const enemy = this._enemies[index];
+            const model = enemy.getComponent(AnimationModel);
             // if (!this._hero.defaultAtlas) {
             // console.log('hero default atlas 还没加载完成'); 
             // }
-            if (!enemy.defaultAtlas) {
-                console.log('enemy default atlas 还没加载完成');
-                continue;  //还没加载完成
-            }
-            if (this._hero.defaultAtlas) {
-                const x0 = Math.abs(enemy.position.x - this._hero.position.x);
-                const y0 = Math.abs(enemy.position.y - this._hero.position.y);
-                const x1 = enemy.spriteFrameWidth / 2 + this._hero.spriteFrameWidth / 2;
-                const y1 = enemy.spriteFrameHeight / 2 + this._hero.spriteFrameHeight / 2;
-                if (x0 < x1 && y0 < y1) {
-                    console.log('ggggggggggggggggg');
-                    this.enabled = false;
-                    // this.destroy();
-                    this._hero.play('blowup');
-                    this.stop();
-                    return;
-                }
-            }
+            // if (!model.defaultAtlas) {
+            //     console.log('enemy default atlas 还没加载完成');
+            //     continue;  //还没加载完成
+            // }
+            // const heroModel = this._hero.getComponent(AnimationModel);
+            // if (heroModel.defaultAtlas) {
+            //     const x0 = Math.abs(enemy.position.x - this._hero.position.x);
+            //     const y0 = Math.abs(enemy.position.y - this._hero.position.y);
+            //     const x1 = heroModel.spriteFrameWidth / 2 + heroModel.spriteFrameWidth / 2;
+            //     const y1 = heroModel.spriteFrameHeight / 2 + heroModel.spriteFrameHeight / 2;
+            //     if (x0 < x1 && y0 < y1) {
+            //         console.log('ggggggggggggggggg');
+            //         this.enabled = false;
+            //         // this.destroy();
+            //         heroModel.play('blowup');
+            //         this.stop();
+            //         return;
+            //     }
+            // }
+
+
             //     for (let j = 0; j < this._bullets.length; j++) {
             //         const bullet = this._bullets[j];
             //         const bulletSprite = bullet.getComponent(Sprite);
@@ -124,7 +130,7 @@ export class game extends Component {
         //停止战场动画
         for (let index = 0; index < this._enemies.length; index++) {
             const enemy = this._enemies[index];
-            enemy.stop();
+            enemy.getComponent(AnimationModel).stop();
             const movable = enemy.getComponent(Movable);
             movable.enabled = false;
         }
@@ -141,7 +147,7 @@ export class game extends Component {
         // console.log('bullets:'+this._bullets.length);
 
     }
-    private removeEnemy(enemy: AnimationModel) {
+    private removeEnemy(enemy: Node) {
         const index = this._enemies.indexOf(enemy);
         this._enemies.splice(index, 1);
         // console.log('enemies:'+this._enemies.length);

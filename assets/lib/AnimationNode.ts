@@ -1,20 +1,21 @@
-import { Animation, AnimationClip, AnimationState, Layers, Node, resources, Sprite, SpriteAtlas } from 'cc';
+import { Animation, AnimationClip, AnimationState, Component, resources, SpriteAtlas, _decorator } from 'cc';
 import { IFrameAnimationOptions } from '../utils/IFrameAnimationOptions';
+const { ccclass, property } = _decorator;
 
-export class AnimationModel extends Node {
+
+@ccclass('AnimationModel')
+export class AnimationModel extends Component {
 
     static SPRITE_ATLAS_LOAD_COMPLETE = 'SPRITE_ATLAS_LOAD_COMPLETE';
     private _optionMap: { [key: string]: IFrameAnimationOptions };
     private _atlasMap: { [key: string]: SpriteAtlas };
 
-    constructor() {
-        super();
+    start() {
         this._optionMap = {};
         this._atlasMap = {};
 
         const animation = this.addComponent(Animation);
-        this.addComponent(Sprite);
-        this.layer = Layers.Enum.UI_2D;
+
         // @ts-ignore
         animation.on('finished', this.onAnimationFinished, this);
 
@@ -81,7 +82,7 @@ export class AnimationModel extends Node {
 
     private setAtlas(action: string, val: SpriteAtlas) {
         this._atlasMap[action] = val;
-        this.emit(AnimationModel.SPRITE_ATLAS_LOAD_COMPLETE, action);
+        this.node.emit(AnimationModel.SPRITE_ATLAS_LOAD_COMPLETE, action);
     }
 
     getAtlas(action: string) {
