@@ -1,4 +1,5 @@
 export interface IFrameAnimationOptions {
+    playOnLoad?:boolean;
     fps?: number;
     /**
      * 1 一遍
