@@ -2,7 +2,7 @@
  * @Author: wildfirecode wildfirecode13@gmail.com
  * @Date: 2022-06-20 09:28:13
  * @LastEditors: wildfirecode wildfirecode13@gmail.com
- * @LastEditTime: 2022-06-23 16:35:24
+ * @LastEditTime: 2022-06-23 16:53:37
  * @FilePath: \war\assets\script\game.ts
  * @Description: 
  * 
@@ -14,7 +14,7 @@ import { Firable } from '../lib/Firable';
 import { Movable } from '../lib/Movable';
 import { getHalfStageWidth } from '../utils/stage';
 import { Army } from './game/Army';
-import { bulletPool, createBackground, createHeroNode } from './game/utils';
+import { bulletPool, createBackground, createHero } from './game/utils';
 const { ccclass, property } = _decorator;
 
 @ccclass('game')
@@ -33,10 +33,7 @@ export class game extends Component {
         this._bullets = this._bullets || [];
 
         const bg = createBackground();
-        const hero = this._hero = new AnimationModel();
-
-        hero.addDefaultAction('standby', 'model/hero', { wrapMode: 2 });
-        hero.addAction('blowup', 'model/hero_blowup', { wrapMode: 1, finished: this.onBlowUpFinish, thisobj: this });
+        const hero = this._hero = createHero(this.onBlowUpFinish,this);
 
         this.node.addChild(bg);
         this.node.addChild(hero);

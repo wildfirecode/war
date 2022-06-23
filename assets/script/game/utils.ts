@@ -38,7 +38,7 @@ export const createEnemyNode = () => {
     // return enemyNode
 }
 
-export const createHeroNode = () => {
+export const createHero = (onBlowUpFinish,thisobj) => {
     // const hero = loadModel('model/hero_blowup');
     // hero.addComponent(Draggable);
     // hero.once(AnimationModel.SPRITE_ATLAS_LOAD_COMPLETE, () => {
@@ -48,6 +48,11 @@ export const createHeroNode = () => {
     //     // hero.setPosition(0, -getHalfStageHeight() + hero.spriteFrameHeight / 2, 0)
     // }, this);
     // return hero
+
+    const hero  = new AnimationModel();
+    hero.addDefaultAction('standby', 'model/hero', { wrapMode: 2 });
+    hero.addAction('blowup', 'model/hero_blowup', { wrapMode: 1, finished: onBlowUpFinish, thisobj: thisobj });
+    return hero
 }
 
 export const createBackground = () => {
