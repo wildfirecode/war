@@ -28,6 +28,7 @@ export class AnimationModel extends Node {
     }
 
     private _currentAction: string;
+    private _defaultAction: string;
     play(action: string) {
         this._currentAction = action;
         const animation = this.getComponent(Animation);
@@ -38,7 +39,8 @@ export class AnimationModel extends Node {
         }
     }
 
-    stop(action: string) {
+    stop(action?: string) {
+        action = action || this._defaultAction;
         const animation = this.getComponent(Animation);
         const state = animation.getState(action);
         const clip = state?.clip;
@@ -51,6 +53,7 @@ export class AnimationModel extends Node {
     }
 
     addDefaultAction(action: string, resourcesUrl: string, options?: IFrameAnimationOptions) {
+        this._defaultAction = action;
         this.addAction(action, resourcesUrl, options)
         this.play(action);
     }
@@ -75,11 +78,20 @@ export class AnimationModel extends Node {
         });
     }
 
+
     private setAtlas(action: string, val: SpriteAtlas) {
         this._atlasMap[action] = val;
-        this.emit(AnimationModel.SPRITE_ATLAS_LOAD_COMPLETE);
+        this.emit(AnimationModel.SPRITE_ATLAS_LOAD_COMPLETE, action);
     }
-    getAtlas(action: string) { return this._atlasMap[action] }
+
+    getAtlas(action: string) {
+        return this._atlasMap[action]
+    }
+
+    get defaultAtlas() {
+        return this.getAtlas(this._defaultAction);
+    }
+
 
     getSpriteFrameWidth(action: string) {
         const frame = this.getAtlas(action)?.getSpriteFrames()[0];
@@ -90,6 +102,21 @@ export class AnimationModel extends Node {
     }
     getSpriteFrameHeight(action: string) {
         const frame = this.getAtlas(action)?.getSpriteFrames()[0];
+        if (frame) {
+            return frame.originalSize.height;
+        }
+        return 0
+    }
+
+    get spriteFrameWidth() {
+        const frame = this.getAtlas(this._defaultAction)?.getSpriteFrames()[0];
+        if (frame) {
+            return frame.originalSize.width;
+        }
+        return 0
+    }
+    get spriteFrameHeight() {
+        const frame = this.getAtlas(this._defaultAction)?.getSpriteFrames()[0];
         if (frame) {
             return frame.originalSize.height;
         }
