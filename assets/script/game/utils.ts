@@ -2,7 +2,7 @@
  * @Author: wildfirecode wildfirecode13@gmail.com
  * @Date: 2022-06-22 14:11:32
  * @LastEditors: wildfirecode wildfirecode13@gmail.com
- * @LastEditTime: 2022-06-23 17:17:00
+ * @LastEditTime: 2022-06-23 17:38:56
  * @FilePath: \war\assets\script\game\utils.ts
  * @Description: 
  * 
