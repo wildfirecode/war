@@ -58,7 +58,14 @@ export const createHero = () => {
     const model = hero.addComponent(AnimationModel);
     model.addDefaultActionInfo('standby', 'model/hero', { wrapMode: 2 });
     model.addActionInfo('blowup', 'model/hero_blowup', { wrapMode: 1, finished: onBlowUpFinish, thisobj: this });
-    hero.setPosition(0, 0, 0)
+    hero.setPosition(0, 0, 0);
+    hero.once(AnimationModel.SPRITE_ATLAS_LOAD_COMPLETE, (action) => {
+        if (action == 'standby') {
+            const weapon = hero.addComponent(Weapon);
+            weapon.firePiontOffset = new Vec2(0, model.spriteFrameHeight / 2);
+            hero.setPosition(0, -getHalfStageHeight() + model.spriteFrameHeight / 2, 0)
+        }
+    }, this);
     return hero
 }
 

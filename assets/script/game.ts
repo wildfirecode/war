@@ -10,6 +10,7 @@
  */
 import { Component, Node, _decorator } from 'cc';
 import { AnimationModel } from '../lib/AnimationNode';
+import { Draggable } from '../lib/Draggable';
 import { Firable } from '../lib/Firable';
 import { Movable } from '../lib/Movable';
 import { getHalfStageWidth } from '../utils/stage';
@@ -102,6 +103,7 @@ export class game extends Component {
                     this.enabled = false;
                     // this.destroy();
                     heroModel.play('blowup');
+                    this._hero.getComponent(Draggable).destroy();
                     this.stop();
                     return;
                 }
