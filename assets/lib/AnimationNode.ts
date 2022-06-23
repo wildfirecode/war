@@ -9,6 +9,8 @@ export class AnimationModel extends Component {
     static SPRITE_ATLAS_LOAD_COMPLETE = 'SPRITE_ATLAS_LOAD_COMPLETE';
     private _optionMap: { [key: string]: IFrameAnimationOptions };
     private _atlasMap: { [key: string]: SpriteAtlas };
+    private _defaultActionInfo;
+    private _actionInfo: any[] = [];
 
     start() {
         this._optionMap = {};
@@ -19,6 +21,23 @@ export class AnimationModel extends Component {
         // @ts-ignore
         animation.on('finished', this.onAnimationFinished, this);
 
+        this.parseActionInfo();
+    }
+
+    private parseActionInfo() {
+        this.addDefaultAction(
+            this._defaultActionInfo.action,
+            this._defaultActionInfo.resourcesUrl,
+            this._defaultActionInfo.options,
+        )
+        for (let index = 0; index < this._actionInfo.length; index++) {
+            const actionInfo = this._actionInfo[index];
+            this.addAction(
+                actionInfo.action,
+                actionInfo.resourcesUrl,
+                actionInfo.options,
+            )
+        }
     }
 
     onAnimationFinished(type: string, state: AnimationState) {
@@ -59,6 +78,14 @@ export class AnimationModel extends Component {
         this.play(action);
     }
 
+    addDefaultActionInfo(action: string, resourcesUrl: string, options?: IFrameAnimationOptions) {
+        this._defaultActionInfo = { action, resourcesUrl, options };
+    }
+
+    addActionInfo(action: string, resourcesUrl: string, options?: IFrameAnimationOptions) {
+        this._actionInfo.push({ action, resourcesUrl, options });
+    }
+
     addAction(action: string, resourcesUrl: string, options?: IFrameAnimationOptions) {
         options = options || {};
         this._optionMap[action] = options;
@@ -86,7 +113,7 @@ export class AnimationModel extends Component {
     }
 
     getAtlas(action: string) {
-        return this._atlasMap[action]
+        return this._atlasMap && this._atlasMap[action]
     }
 
     get defaultAtlas() {

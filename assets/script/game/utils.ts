@@ -32,7 +32,7 @@ export const createEnemyNode = () => {
     const enemyNode = createNode();
     enemyNode.name = 'enemy';
     const model = enemyNode.addComponent(AnimationModel);
-    model.addDefaultAction('standby', 'model/enemy3', { wrapMode: 2 });
+    model.addDefaultActionInfo('standby', 'model/enemy3', { wrapMode: 2 });
     enemyNode.once(AnimationModel.SPRITE_ATLAS_LOAD_COMPLETE, (action) => {
         const movable = enemyNode.addComponent(Movable);
         movable.velocityY = -8;
@@ -56,9 +56,8 @@ export const createHero = () => {
     const hero = createNode();
     hero.addComponent(Draggable);
     const model = hero.addComponent(AnimationModel);
-    model.addDefaultAction('standby', 'model/hero', { wrapMode: 2 });
-    // model.addAction('blowup', 'model/hero_blowup', { wrapMode: 1, finished: onBlowUpFinish, thisobj: this });
-
+    model.addDefaultActionInfo('standby', 'model/hero', { wrapMode: 2 });
+    model.addActionInfo('blowup', 'model/hero_blowup', { wrapMode: 1, finished: onBlowUpFinish, thisobj: this });
     hero.setPosition(0, 0, 0)
     return hero
 }

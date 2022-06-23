@@ -37,8 +37,8 @@ export class game extends Component {
 
         this.node.on(Firable.FIRE, (enemy: Node) => {
             console.log('on game fire=>', enemy?.name, enemy);
-            // this._enemies.push(enemy);
-            // enemy.once(Movable.ON_DISAPPEAR, this.removeEnemy, this);
+            this._enemies.push(enemy);
+            enemy.once(Movable.ON_DISAPPEAR, this.removeEnemy, this);
         }, this);
 
         this._hero.on(Firable.FIRE, (bullet: Node) => {
@@ -83,29 +83,29 @@ export class game extends Component {
         
         for (let index = 0; index < this._enemies.length; index++) {
             const enemy = this._enemies[index];
-            const model = enemy.getComponent(AnimationModel);
+            const enemyModel = enemy.getComponent(AnimationModel);
             // if (!this._hero.defaultAtlas) {
             // console.log('hero default atlas 还没加载完成'); 
             // }
-            // if (!model.defaultAtlas) {
-            //     console.log('enemy default atlas 还没加载完成');
-            //     continue;  //还没加载完成
-            // }
-            // const heroModel = this._hero.getComponent(AnimationModel);
-            // if (heroModel.defaultAtlas) {
-            //     const x0 = Math.abs(enemy.position.x - this._hero.position.x);
-            //     const y0 = Math.abs(enemy.position.y - this._hero.position.y);
-            //     const x1 = heroModel.spriteFrameWidth / 2 + heroModel.spriteFrameWidth / 2;
-            //     const y1 = heroModel.spriteFrameHeight / 2 + heroModel.spriteFrameHeight / 2;
-            //     if (x0 < x1 && y0 < y1) {
-            //         console.log('ggggggggggggggggg');
-            //         this.enabled = false;
-            //         // this.destroy();
-            //         heroModel.play('blowup');
-            //         this.stop();
-            //         return;
-            //     }
-            // }
+            if (!enemyModel.defaultAtlas) {
+                console.log('enemy default atlas 还没加载完成');
+                continue;  //还没加载完成
+            }
+            const heroModel = this._hero.getComponent(AnimationModel);
+            if (heroModel.defaultAtlas) {
+                const x0 = Math.abs(enemy.position.x - this._hero.position.x);
+                const y0 = Math.abs(enemy.position.y - this._hero.position.y);
+                const x1 = enemyModel.spriteFrameWidth / 2 + heroModel.spriteFrameWidth / 2;
+                const y1 = enemyModel.spriteFrameHeight / 2 + heroModel.spriteFrameHeight / 2;
+                if (x0 < x1 && y0 < y1) {
+                    console.log('ggggggggggggggggg');
+                    this.enabled = false;
+                    // this.destroy();
+                    heroModel.play('blowup');
+                    this.stop();
+                    return;
+                }
+            }
 
 
             //     for (let j = 0; j < this._bullets.length; j++) {
