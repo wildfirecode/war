@@ -9,13 +9,13 @@
  * Copyright (c) 2022 by wildfirecode wildfirecode13@gmail.com, All Rights Reserved. 
  */
 import { Component, Node, _decorator } from 'cc';
-import { AnimationModel } from '../lib/AnimationNode';
-import { Draggable } from '../lib/Draggable';
-import { Firable } from '../lib/Firable';
-import { Movable } from '../lib/Movable';
-import { getHalfStageWidth } from '../utils/stage';
 import { Army } from './game/Army';
 import { bulletPool, createBackground, createHero } from './game/utils';
+import { AnimationModel } from './lib/component/AnimationNode';
+import { Draggable } from './lib/component/Draggable';
+import { Firable } from './lib/component/Firable';
+import { Movable } from './lib/component/Movable';
+import { getHalfStageWidth } from './lib/utils/stage';
 const { ccclass, property } = _decorator;
 
 @ccclass('game')

@@ -1,6 +1,6 @@
 import { Component, director, _decorator } from 'cc';
-import { loadModel } from '../utils/loadModel';
-import { loadRemoteModel } from '../utils/loadRemoteModel';
+import { loadModel } from './lib/utils/loadModel';
+import { loadRemoteModel } from './lib/utils/loadRemoteModel';
 const { ccclass, property } = _decorator;
 
 @ccclass('loading')

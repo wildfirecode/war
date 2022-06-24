@@ -2,22 +2,20 @@
  * @Author: wildfirecode wildfirecode13@gmail.com
  * @Date: 2022-06-22 14:11:32
  * @LastEditors: wildfirecode wildfirecode13@gmail.com
- * @LastEditTime: 2022-06-23 18:02:46
+ * @LastEditTime: 2022-06-24 14:15:09
  * @FilePath: \war\assets\script\game\utils.ts
  * @Description: 
  * 
  * Copyright (c) 2022 by wildfirecode wildfirecode13@gmail.com, All Rights Reserved. 
  */
 import { Vec2 } from "cc";
-import { AnimationModel } from "../../lib/AnimationNode";
-import { createNode } from "../../lib/createNode";
-import { Draggable } from "../../lib/Draggable";
-import { Movable } from "../../lib/Movable";
-import { Pool } from "../../lib/Pool";
-import { loadImage } from "../../utils/loadImage";
-import { loadModel } from "../../utils/loadModel";
-import { getHalfStageHeight, getHalfStageWidth } from "../../utils/stage";
-import { Enemy } from "./Enemy";
+import { AnimationModel } from "../lib/component/AnimationNode";
+import { Draggable } from "../lib/component/Draggable";
+import { Movable } from "../lib/component/Movable";
+import { Pool } from "../lib/pool/Pool";
+import { createNode } from "../lib/utils/createNode";
+import { loadImage } from "../lib/utils/loadImage";
+import { getHalfStageHeight } from "../lib/utils/stage";
 import { Weapon } from "./Weapon";
 
 export const createBullet = () => {

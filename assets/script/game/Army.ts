@@ -10,8 +10,9 @@
  */
 
 import { _decorator } from 'cc';
-import { Firable } from '../../lib/Firable';
+import { Firable } from '../lib/component/Firable';
 import { createEnemyNode } from './utils';
+
 
 const { ccclass, property } = _decorator;
 

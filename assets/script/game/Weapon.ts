@@ -2,7 +2,7 @@
  * @Author: wildfirecode wildfirecode13@gmail.com
  * @Date: 2022-06-21 20:51:03
  * @LastEditors: wildfirecode wildfirecode13@gmail.com
- * @LastEditTime: 2022-06-22 20:32:19
+ * @LastEditTime: 2022-06-24 14:15:48
  * @FilePath: \war\assets\script\game\Weapon.ts
  * @Description: 
  * 
@@ -10,8 +10,9 @@
  */
 
 import { Vec2, _decorator } from 'cc';
-import { Firable } from '../../lib/Firable';
-import { Movable } from '../../lib/Movable';
+import { Firable } from '../lib/component/Firable';
+import { Movable } from '../lib/component/Movable';
+
 import { bulletPool } from './utils';
 
 const { ccclass, property } = _decorator;

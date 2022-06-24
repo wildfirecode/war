@@ -9,7 +9,7 @@
  * Copyright (c) 2022 by wildfirecode wildfirecode13@gmail.com, All Rights Reserved. 
  */
 import { Animation, AnimationClip, Layers, Node, resources, Sprite, SpriteAtlas } from 'cc';
-import { AnimationModel } from '../lib/AnimationNode';
+import { AnimationModel } from '../component/AnimationNode';
 import { IFrameAnimationOptions } from './IFrameAnimationOptions';
 export const loadModel = (resourcesUrl: string, action:string, animationNode?: AnimationModel, options?: IFrameAnimationOptions) => {
     // animationNode = animationNode || new AnimationModel();

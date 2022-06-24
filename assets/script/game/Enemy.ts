@@ -10,8 +10,6 @@
  */
 
 import { Component, _decorator } from 'cc';
-import { Movable } from '../../lib/Movable';
-import { loadImage } from '../../utils/loadImage';
 
 const { ccclass, property } = _decorator;
 

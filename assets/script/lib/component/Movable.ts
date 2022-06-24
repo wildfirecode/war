@@ -2,16 +2,16 @@
  * @Author: wildfirecode wildfirecode13@gmail.com
  * @Date: 2022-06-21 19:33:22
  * @LastEditors: wildfirecode wildfirecode13@gmail.com
- * @LastEditTime: 2022-06-22 20:35:45
- * @FilePath: \war\assets\lib\Movable.ts
+ * @LastEditTime: 2022-06-24 14:14:24
+ * @FilePath: \war\assets\script\lib\component\Movable.ts
  * @Description: 
  * 
  * Copyright (c) 2022 by wildfirecode wildfirecode13@gmail.com, All Rights Reserved. 
  */
 
 import { Component, _decorator, input, Input, EventTouch, Vec2, Vec3, view, Sprite } from 'cc';
+import { IPoolItem } from '../pool/Pool';
 import { getHalfStageHeight, getHalfStageWidth } from '../utils/stage';
-import { IPoolItem } from './Pool';
 const { ccclass, property } = _decorator;
 
 @ccclass('Movable')

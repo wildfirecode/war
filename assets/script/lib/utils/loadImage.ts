@@ -10,7 +10,7 @@
  */
 
 import { resources, Sprite, SpriteFrame } from 'cc';
-import { createNode } from '../lib/createNode';
+import { createNode } from './createNode';
 export const loadImage = (url:string) => {
     const image = createNode();
     image.name = url.replace('\/','-');
